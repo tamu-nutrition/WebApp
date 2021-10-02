@@ -1,0 +1,27 @@
+<%= form_with(model: participation) do |form| %>
+  <% if participation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(participation.errors.count, "error") %> prohibited this participation from being saved:</h2>
+
+      <ul>
+        <% participation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.number_field :event_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uin %>
+    <%= form.text_field :uin %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
