@@ -1,6 +1,16 @@
+<style type="text/css">
+    #title {display:inline-block;margin-right:10px;} 
+    #signout {display:inline-block;float:right;} 
+</style>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Women in Economics: Members and Alumni</h1>
+<div id="title">
+    <h1>Women in Economics: Members and Alumni</h1>
+</div>
+<div id="signout">
+    <h3><%= link_to "Sign Out", destroy_admin_session_path %><h3>
+</div>
 
 <table>
   <thead>
