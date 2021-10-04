@@ -9,4 +9,30 @@ RSpec.describe Person, type: :model do
   it 'is valid with valid attributes' do
     expect(@person).to be_valid
   end
+
+  it 'has no first name' do
+    @person.first_name = nil
+    expect(@person).not_to be_valid
+  end
+
+  it 'has no last name' do
+    @person.last_name = nil
+    expect(@person).not_to be_valid
+  end
+
+  it 'has no class year' do
+    @person.class_year = nil
+    expect(@person).not_to be_valid
+  end
+  
+  it 'has no email' do
+    @person.email = nil
+    expect(@person).not_to be_valid
+  end
+
+  it 'has no phone number' do
+    @person.phone_number = nil
+    expect(@person).not_to be_valid
+  end
+
 end
