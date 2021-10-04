@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
     get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
   end
-  resources :participations
+  resources :participations do
+    get '/participations/new' => 'participations#new', :as => :new_participation
+  end
   resources :events
   resources :people
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

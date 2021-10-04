@@ -1,5 +1,15 @@
-<h1>New Participation</h1>
+<h1 style="text-align:center"><%= @participation.event_name %></h1>
+
+<br><br>
 
 <%= render 'form', participation: @participation %>
 
-<%= link_to 'Back', participations_path %>
+<br><br>
+
+<div id="back">
+    <%= link_to 'Back', participations_path %>
+</div>
+
+<style type="text/css">
+    #back {text-align:center} 
+</style>

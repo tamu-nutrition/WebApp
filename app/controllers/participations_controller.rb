@@ -12,7 +12,10 @@ class ParticipationsController < ApplicationController
 
   # GET /participations/new
   def new
-    @participation = Participation.new
+    event = Event.find(params[:event])
+    puts event.event_id
+    puts event.event_name
+    @participation = Participation.new(event_id: event.event_id, event_name: event.event_name)
   end
 
   # GET /participations/1/edit
@@ -25,7 +28,7 @@ class ParticipationsController < ApplicationController
 
     respond_to do |format|
       if @participation.save
-        format.html { redirect_to new_participation_path, notice: "Participation was successfully created." }
+        format.html { redirect_back(fallback_location: root_path) }
         format.json { render :show, status: :created, location: @participation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +67,6 @@ class ParticipationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def participation_params
-      params.require(:participation).permit(:event_id, :uin)
+      params.require(:participation).permit(:event_id, :uin, :event_name)
     end
 end

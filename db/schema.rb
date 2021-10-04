@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_10_02_232419) do
   create_table "participations", force: :cascade do |t|
     t.integer "event_id"
     t.string "uin"
+    t.string "event_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
