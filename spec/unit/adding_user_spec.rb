@@ -1,4 +1,4 @@
-# rails spec ./spec/unit/removing_user_spec.rb
+# rails spec ./spec/unit/adding_user_spec.rb
 require 'rails_helper'
 
 RSpec.describe Person, type: :model do
@@ -8,10 +8,5 @@ RSpec.describe Person, type: :model do
   
   it 'is valid with valid attributes' do
     expect(@person).to be_valid
-  end
-
-  it 'is deleted properly' do
-    @person.destroy
-    expect(Person.find_by(first_name: "Nathan_Testing_Account_Unit_Test")).to be_nil
   end
 end
