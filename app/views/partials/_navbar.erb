@@ -1,5 +1,7 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="blackOffset" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 50px; background-color: #262626;z-index: -1">&nbsp;</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Toggle button -->
@@ -46,8 +48,7 @@
         </li>
       </ul>
       <!-- Left links -->
-    </div>
-    <!-- Collapsible wrapper -->
+
 
     <!-- Right elements -->
     <div class="d-flex align-items-center">
@@ -74,6 +75,11 @@
       </ul>
       <% end %>
     </div>
+
+    </div>
+    <!-- Collapsible wrapper -->
+
+
     <!-- Right elements -->
   </div>
   <!-- Container wrapper -->
@@ -85,3 +91,5 @@
     <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
     <% end -%>
 <% end %>
+
+<br />
