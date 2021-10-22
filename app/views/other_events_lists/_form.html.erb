@@ -1,0 +1,37 @@
+<%= form_with(model: other_events_list) do |form| %>
+  <% if other_events_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(other_events_list.errors.count, "error") %> prohibited this other_events_list from being saved:</h2>
+
+      <ul>
+        <% other_events_list.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.text_field :event_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :point_worth %>
+    <%= form.number_field :point_worth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :event_type %>
+    <%= form.text_field :event_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_participation %>
+    <%= form.number_field :number_participation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
