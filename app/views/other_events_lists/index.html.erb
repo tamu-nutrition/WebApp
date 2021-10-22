@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Other Events Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Point worth</th>
+      <th>Event type</th>
+      <th>Number participation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @other_events_lists.each do |other_events_list| %>
+      <tr>
+        <td><%= other_events_list.event_id %></td>
+        <td><%= other_events_list.point_worth %></td>
+        <td><%= other_events_list.event_type %></td>
+        <td><%= other_events_list.number_participation %></td>
+        <td><%= link_to 'Show', other_events_list %></td>
+        <td><%= link_to 'Edit', edit_other_events_list_path(other_events_list) %></td>
+        <td><%= link_to 'Destroy', other_events_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Other Events List', new_other_events_list_path %>
