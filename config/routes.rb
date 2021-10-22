@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   resources :participations do
     get '/participations/new' => 'participations#new', :as => :new_participation
   end
-  resources :events
-  resources :people
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'people#index'
+  root to: 'students#index'
 end

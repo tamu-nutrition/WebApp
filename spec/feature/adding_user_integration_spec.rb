@@ -4,7 +4,7 @@ require 'rails_helper'
 
 def login
   Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
-  visit people_url
+  visit students_url
   click_link 'Sign in with Google'
 end
 
