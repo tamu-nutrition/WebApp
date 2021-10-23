@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p>
   <strong>Event:</strong>
   <%= @request.event_id %>
@@ -25,3 +26,44 @@
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>
+=======
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @request.event_id %>
+</p>
+
+<p>
+  <strong>Uin:</strong>
+  <%= @request.UIN %>
+</p>
+
+<p>
+  <strong>Date of request:</strong>
+  <%= @request.date_of_request %>
+</p>
+
+<p>
+  <strong>Points requested:</strong>
+  <%= @request.points_requested %>
+</p>
+
+<p>
+  <strong>Request time:</strong>
+  <%= @request.request_time %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @request.approved %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @request.id %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>
+>>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21

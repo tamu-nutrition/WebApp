@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= form_with(model: request) do |form| %>
   <% if request.errors.any? %>
     <div id="error_explanation">
@@ -40,3 +41,57 @@
     <%= form.submit %>
   </div>
 <% end %>
+=======
+<%= form_with(model: request) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+        <% request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.number_field :event_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :UIN %>
+    <%= form.text_field :UIN %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_request %>
+    <%= form.date_select :date_of_request %>
+  </div>
+
+  <div class="field">
+    <%= form.label :points_requested %>
+    <%= form.number_field :points_requested %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request_time %>
+    <%= form.text_field :request_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approved %>
+    <%= form.check_box :approved %>
+  </div>
+
+  <div class="field">
+    <%= form.label :id %>
+    <%= form.text_field :id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+>>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21

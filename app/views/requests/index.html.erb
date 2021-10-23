@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style type="text/css">
     #title {display:inline-block;margin-right:10px;} 
     #signout {display:inline-block;float:right;} 
@@ -6,15 +7,30 @@
 
 <h1>Requests#index</h1>
 <p>Find me in app/views/requests/index.html.erb</p>
+=======
+<p id="notice"><%= notice %></p>
+
+<h1>Requests</h1>
+>>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21
 
 <table>
   <thead>
     <tr>
+<<<<<<< HEAD
       <th>| Event ID |</th>
       <th>UIN |</th>
       <th>Date of Request |</th>
       <th>Points |</th>
       <th>Requst Type |</th>
+=======
+      <th>Event</th>
+      <th>Uin</th>
+      <th>Date of request</th>
+      <th>Points requested</th>
+      <th>Request time</th>
+      <th>Approved</th>
+      <th>Id</th>
+>>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,6 +39,7 @@
     <% @requests.each do |request| %>
       <tr>
         <td><%= request.event_id %></td>
+<<<<<<< HEAD
         <td><%= request.uin %></td>
         <td><%= request.date %></td>
         <td><%= request.points %></td>
@@ -30,10 +47,26 @@
         <td><%= link_to 'Show', request %></td>
         <td><%= link_to 'Edit', edit_request_path(request) %></td>
         <td><%= link_to 'Remove', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+=======
+        <td><%= request.UIN %></td>
+        <td><%= request.date_of_request %></td>
+        <td><%= request.points_requested %></td>
+        <td><%= request.request_time %></td>
+        <td><%= request.approved %></td>
+        <td><%= request.id %></td>
+        <td><%= link_to 'Show', request %></td>
+        <td><%= link_to 'Edit', edit_request_path(request) %></td>
+        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+>>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<<<<<<< HEAD
 <%= link_to 'Add Request', new_request_path %>
+=======
+
+<%= link_to 'New Request', new_request_path %>
+>>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21
