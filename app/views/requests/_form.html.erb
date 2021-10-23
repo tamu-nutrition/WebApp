@@ -1,0 +1,42 @@
+<%= form_with(model: request) do |form| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :event_id %>
+    <%= form.text_field :event_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uin %>
+    <%= form.text_field :uin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.text_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :points %>
+    <%= form.text_field :points %>
+  </div>
+
+  <div class="field">
+    <%= form.label :request %>
+    <%= form.text_field :request %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
