@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2021_10_20_154310) do
-=======
 ActiveRecord::Schema.define(version: 2021_10_22_022156) do
->>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,17 +71,6 @@ ActiveRecord::Schema.define(version: 2021_10_22_022156) do
     t.integer "social_points"
     t.integer "total_points"
     t.boolean "active_member"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "requests", force: :cascade do |t|
-    t.decimal "event_id"
-    t.decimal "uin"
-    t.datetime "date"
-    t.decimal "points"
-    t.text "request_type"
-    t.boolean "approved"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

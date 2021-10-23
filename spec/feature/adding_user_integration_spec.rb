@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-# rspec ./spec/feature/adding_user_integration_spec.rb
-
-require 'rails_helper'
-
-RSpec.describe 'Adding a person', type: :feature do
-  scenario 'success inputs' do
-    Person.create!(first_name: 'Nathan_Testing_Account', last_name: 'Reddy', class_year: '2022', email: 'nathan.reddy@tamu.edu', phone_number: '8889991000')
-    
-    visit people_url
-    expect(page).to have_content('Reddy')
-  end
-=======
 # rspec ./spec/feature/adding_user_integration_spec.rb
 
 require 'rails_helper'
@@ -38,5 +25,4 @@ RSpec.describe 'Adding a person', type: :feature do
     Rails.application.env_config["omniauth.auth"] = nil
     OmniAuth.config.mock_auth[:google] = nil
   end
->>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21
 end

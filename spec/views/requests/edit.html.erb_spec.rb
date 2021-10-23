@@ -1,9 +1,5 @@
 require 'rails_helper'
 
-<<<<<<< HEAD
-RSpec.describe "requests/edit.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
-=======
 RSpec.describe "requests/edit", type: :view do
   before(:each) do
     @request = assign(:request, Request.create!(
@@ -34,5 +30,4 @@ RSpec.describe "requests/edit", type: :view do
       assert_select "input[name=?]", "request[id]"
     end
   end
->>>>>>> 773b3ee2f2ba6be46519d552a1feae33a29d8d21
 end

@@ -30,9 +30,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  ENV['GOOGLE_OAUTH_CLIENT_ID'] = '262230267345-euaqg4mejp3qn1cmrdtuhgpkssv0d9dk.apps.googleusercontent.com'
-  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = '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'
-
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
