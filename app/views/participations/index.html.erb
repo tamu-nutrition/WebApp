@@ -1,6 +1,13 @@
 <%= render partial: "partials/navbar", locals: {loggedIn: true, page:"participation_list"} %>
 <h1 style="text-align:center">Participations</h1>
 
+<%= form_with url: "/participations", method: :get do |form| %>
+  <%= form.label :id, "Meeting ID:" %>
+  <%= form.text_field :id %>
+  <%= form.submit "Show Participation" %>
+<% end %>
+
+
 <table>
   <thead>
     <tr>

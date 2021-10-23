@@ -3,7 +3,11 @@ class ParticipationsController < ApplicationController
 
   # GET /participations or /participations.json
   def index
-    @participations = Participation.all
+    if params[:id].present? 
+      @participations = Participation.where(event_id: params[:id])
+    else
+      @participations = Participation.all
+    end
   end
 
   # GET /participations/1 or /participations/1.json
