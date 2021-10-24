@@ -1,4 +1,11 @@
+<%= render partial: "partials/navbar", locals: {loggedIn: false, page:"invalid_credentials"} %>
+
 <p id="notice"><%= notice %></p>
+
+<style type="text/css">
+    #title {display:inline-block;margin-right:10px;} 
+    #signout {display:inline-block;float:right;} 
+</style>
 
 <h1>Requests</h1>
 
@@ -24,8 +31,8 @@
         <td><%= link_to 'Show', request %></td>
         <td><%= link_to 'Edit', edit_request_path(request) %></td>
         <td><%= link_to 'Remove', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Accept', accept_requests_path(request) %></td>
-        <td><%= link_to 'Deny', request, method: :deny_request %></td>
+        <td><%= link_to 'Accept', accept_request_path(:id => request.id), method: :post %></td>
+        <td><%= link_to 'Deny', deny_request_path(:id => request.id), method: :post %></td>
       </tr>
     <% end %>
   </tbody>

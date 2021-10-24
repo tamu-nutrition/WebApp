@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
     @request.student.increment!(:total_points, @request.points_requested)
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url, notice: "Request was successfully destroyed." }
+      format.html { redirect_to requests_url, notice: "Request was successfully accepted." }
       format.json { head :no_content }
     end
   end
@@ -18,7 +18,7 @@ class RequestsController < ApplicationController
   def deny
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url, notice: "Request was successfully destroyed." }
+      format.html { redirect_to requests_url, notice: "Request was successfully denied." }
       format.json { head :no_content }
     end
   end

@@ -9,13 +9,11 @@ Rails.application.routes.draw do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
     get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
   end
-  resources :participations do
-    get '/participations/new' => 'participations#new', :as => :new_participation
-  end
-
-  resource :requests do
-    post '/requests/index', to: 'requests#accept', :as => :accept
-    post '/requests/index', to: 'requests#deny', :as => :deny
+  resources :requests do
+    member do
+      post 'accept'
+      post 'deny'
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'students#index'
