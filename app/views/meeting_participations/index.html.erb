@@ -2,6 +2,12 @@
 
 <h1>Meeting Participations</h1>
 
+<%= form_with url: "/meeting_participations", method: :get do |form| %>
+  <%= form.label :id, "Meeting ID:" %>
+  <%= form.text_field :id %>
+  <%= form.submit "Show Participation" %>
+<% end %>
+
 <table>
   <thead>
     <tr>

@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 2021_10_22_022156) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer "event_id"
+    t.string "event_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "event_date"
+  end
+
   create_table "meeting_lists", force: :cascade do |t|
     t.integer "meeting_id"
     t.string "meeting_name"
@@ -47,6 +55,24 @@ ActiveRecord::Schema.define(version: 2021_10_22_022156) do
     t.integer "point_worth"
     t.string "event_type"
     t.integer "number_participation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.integer "event_id"
+    t.string "uin"
+    t.string "event_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "class_year"
+    t.string "email"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
