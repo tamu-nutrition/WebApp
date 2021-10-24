@@ -46,6 +46,16 @@
             <a class="nav-link" href="/events">Event List</a>
           <% end %>
         </li>
+
+        <li class="nav-item">
+          <% if page == 'requst_list' %>
+            <a class="nav-link active" href="/requests">Point Request</a>
+          <% end %>
+          <% if page != 'request_list' %>
+            <a class="nav-link" href="/requests">Point Request</a>
+          <% end %>
+        </li>
+                
       </ul>
       <!-- Left links -->
 

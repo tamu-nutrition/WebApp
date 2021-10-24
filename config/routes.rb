@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   resources :participations do
     get '/participations/new' => 'participations#new', :as => :new_participation
   end
+
+  resource :requests do
+    post '/requests/index', to: 'requests#accept', :as => :accept
+    post '/requests/index', to: 'requests#deny', :as => :deny
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'students#index'
 end
