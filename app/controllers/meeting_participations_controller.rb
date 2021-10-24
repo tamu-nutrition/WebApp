@@ -3,11 +3,11 @@ class MeetingParticipationsController < ApplicationController
 
   # GET /meeting_participations or /meeting_participations.json
   def index
-    @meeting_participations = MeetingParticipation.all
-  end
-
-  # GET /meeting_participations/1 or /meeting_participations/1.json
-  def show
+    if params[:id].present? 
+      @meeting_participations = MeetingParticipation.where(meeting_id: params[:id])
+    else
+      @meeting_participations = MeetingParticipation.all
+    end
   end
 
   # GET /meeting_participations/new
