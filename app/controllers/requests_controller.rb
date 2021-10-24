@@ -3,10 +3,20 @@ class RequestsController < ApplicationController
 
   # GET /requests or /requests.json
   def index
+    if authenticate_officer == false
+      return nil
+    end
     @requests = Request.all
   end
 
   def accept
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
+        format.json {render :show, status: :bad_request}
+      end
+      return nil
+    end
     @request.student.increment!(:total_points, @request.points_requested)
     @request.destroy
     respond_to do |format|
@@ -16,6 +26,13 @@ class RequestsController < ApplicationController
   end
 
   def deny
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
+        format.json {render :show, status: :bad_request}
+      end
+      return nil
+    end
     @request.destroy
     respond_to do |format|
       format.html { redirect_to requests_url, notice: "Request was successfully denied." }
@@ -53,6 +70,13 @@ class RequestsController < ApplicationController
 
   # PATCH/PUT /requests/1 or /requests/1.json
   def update
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
+        format.json {render :show, status: :bad_request}
+      end
+      return nil
+    end
     respond_to do |format|
       if @request.update(request_params)
         format.html { redirect_to @request, notice: "Request was successfully updated." }
@@ -66,7 +90,14 @@ class RequestsController < ApplicationController
 
   # DELETE /requests/1 or /requests/1.json
   def destroy
-    @request.student.increment!(:total_points, @request.points_requested)
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
+        format.json {render :show, status: :bad_request}
+      end
+      return nil
+    end
+    #@request.student.increment!(:total_points, @request.points_requested) # for testing
     @request.destroy
     respond_to do |format|
       format.html { redirect_to requests_url, notice: "Request was successfully destroyed." }
@@ -78,6 +109,17 @@ class RequestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_request
       @request = Request.find(params[:id])
+    end
+
+    def authenticate_officer
+      @officers = Officer.all
+      @officers.each do |officer|
+        if officer.email == session[:email]
+          return true
+        end
+      end
+      return false
+
     end
 
     # Only allow a list of trusted parameters through.
