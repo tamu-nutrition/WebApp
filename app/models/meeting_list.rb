@@ -1,2 +1,0 @@
-class MeetingList < ApplicationRecord
-end

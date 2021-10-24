@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_10_24_041338) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,19 +25,19 @@ ActiveRecord::Schema.define(version: 2021_10_24_041338) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
-  create_table "meeting_lists", force: :cascade do |t|
+  create_table "meeting_participations", force: :cascade do |t|
+    t.integer "meeting_id"
+    t.string "UIN"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "meetings", force: :cascade do |t|
     t.integer "meeting_id"
     t.string "meeting_name"
     t.date "date"
     t.string "location"
     t.datetime "start_time"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "meeting_participations", force: :cascade do |t|
-    t.integer "meeting_id"
-    t.string "UIN"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -50,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_10_24_041338) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "other_events_lists", force: :cascade do |t|
+  create_table "other_events", force: :cascade do |t|
     t.integer "event_id"
     t.integer "point_worth"
     t.string "event_type"

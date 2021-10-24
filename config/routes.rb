@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :officers
   resources :students
-  resources :other_events_lists
-  resources :meeting_lists
+  resources :other_events
+  resources :meetings
   resources :requests
   resources :meeting_participations
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
