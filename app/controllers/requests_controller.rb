@@ -1,9 +1,26 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[ show edit update destroy ]
+  before_action :set_request, only: %i[ show edit update destroy accept deny]
 
   # GET /requests or /requests.json
   def index
     @requests = Request.all
+  end
+
+  def accept
+    @request.student.increment!(:total_points, @request.points_requested)
+    @request.destroy
+    respond_to do |format|
+      format.html { redirect_to requests_url, notice: "Request was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  def deny
+    @request.destroy
+    respond_to do |format|
+      format.html { redirect_to requests_url, notice: "Request was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
   # GET /requests/1 or /requests/1.json
@@ -49,6 +66,7 @@ class RequestsController < ApplicationController
 
   # DELETE /requests/1 or /requests/1.json
   def destroy
+    @request.student.increment!(:total_points, @request.points_requested)
     @request.destroy
     respond_to do |format|
       format.html { redirect_to requests_url, notice: "Request was successfully destroyed." }
