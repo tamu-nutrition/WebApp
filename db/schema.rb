@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_021703) do
+
+ActiveRecord::Schema.define(version: 2021_10_24_041338) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +60,8 @@ ActiveRecord::Schema.define(version: 2021_10_24_021703) do
   end
 
   create_table "requests", force: :cascade do |t|
+    t.integer "UIN"
     t.integer "event_id"
-    t.string "UIN"
     t.date "date_of_request"
     t.integer "points_requested"
     t.string "request_time"
@@ -68,8 +70,7 @@ ActiveRecord::Schema.define(version: 2021_10_24_021703) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string "UIN"
+  create_table "students", primary_key: "UIN", id: :serial, force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.integer "meeting_points"
@@ -81,4 +82,5 @@ ActiveRecord::Schema.define(version: 2021_10_24_021703) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "requests", "students", column: "UIN", primary_key: "UIN"
 end
