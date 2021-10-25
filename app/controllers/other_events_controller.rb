@@ -25,7 +25,7 @@ class OtherEventsController < ApplicationController
 
     respond_to do |format|
       if @other_event.save
-        format.html { redirect_to @other_event, notice: "Other events list was successfully created." }
+        format.html { redirect_to @other_event, notice: "Other event was successfully created." }
         format.json { render :show, status: :created, location: @other_event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class OtherEventsController < ApplicationController
   def update
     respond_to do |format|
       if @other_event.update(other_event_params)
-        format.html { redirect_to @other_event, notice: "Other events list was successfully updated." }
+        format.html { redirect_to @other_event, notice: "Other event was successfully updated." }
         format.json { render :show, status: :ok, location: @other_event }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class OtherEventsController < ApplicationController
   def destroy
     @other_event.destroy
     respond_to do |format|
-      format.html { redirect_to other_events_url, notice: "Other events list was successfully destroyed." }
+      format.html { redirect_to other_events_url, notice: "Other event was successfully destroyed." }
       format.json { head :no_content }
     end
   end

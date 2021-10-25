@@ -1,6 +1,8 @@
+<%= render partial: "partials/navbar", locals: {loggedIn: true, page:"event_list"} %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Other Events Lists</h1>
+<h1>Other Events</h1>
 
 <table>
   <thead>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Other Events List', new_other_event_path %>
+<%= link_to 'New Other Event', new_other_event_path %>
