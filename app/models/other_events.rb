@@ -1,0 +1,2 @@
+class OtherEvent < ApplicationRecord
+end

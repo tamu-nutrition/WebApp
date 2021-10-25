@@ -1,6 +1,6 @@
-class CreateMeetingLists < ActiveRecord::Migration[6.1]
+class CreateMeetings < ActiveRecord::Migration[6.1]
   def change
-    create_table :meeting_lists do |t|
+    create_table :meetings do |t|
       t.integer :meeting_id
       t.string :meeting_name
       t.date :date

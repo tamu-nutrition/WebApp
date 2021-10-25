@@ -9,6 +9,10 @@ class MeetingParticipationsController < ApplicationController
       @meeting_participations = MeetingParticipation.all
     end
   end
+  
+  # GET /meeting_participations/1 or /meeting_participations/1.json
+  def show
+  end
 
   # GET /meeting_participations/new
   def new
