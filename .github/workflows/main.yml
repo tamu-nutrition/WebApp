@@ -54,10 +54,10 @@ jobs:
         with:
           name: coverage-report
           path: coverage
-  brakeman-test:
-    name: Brakeman
-      runs-on: ubuntu-18.04
-      steps:
-      - uses: actions/checkout@v1
-      - name: Brakeman
-        uses: devmasx/brakeman-linter-action@v1.0.0
+  Brakeman:
+    name: Brakeman linter
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v1
+    - name: Brakeman
+      uses: devmasx/brakeman-linter-action@v1.0.0
