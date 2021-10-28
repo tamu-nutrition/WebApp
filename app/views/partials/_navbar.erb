@@ -1,0 +1,104 @@
+<!-- Navbar -->
+<div class="blackOffset" style="position: fixed; top: 0px; left: 0px; width: 100vw; height: 53px; background-color: #262626;z-index: -1">&nbsp;</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <% if page == 'home_page' %>
+            <a class="nav-link active" href="/">Dashboard</a>
+          <% end %>
+          <% if page != 'home_page' %>
+            <a class="nav-link" href="/">Dashboard</a>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if page == 'participation_list' %>
+            <a class="nav-link active" href="/participations">Participation List</a>
+          <% end %>
+          <% if page != 'participation_list' %>
+            <a class="nav-link" href="/participations">Participation List</a>
+          <% end %>
+
+        </li>
+        <li class="nav-item">
+          <% if page == 'event_list' %>
+            <a class="nav-link active" href="/other_events">Event List</a>
+          <% end %>
+          <% if page != 'event_list' %>
+            <a class="nav-link" href="/other_events">Event List</a>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <% if page == 'request_list' %>
+            <a class="nav-link active" href="/requests">Point Request</a>
+          <% end %>
+          <% if page != 'request_list' %>
+            <a class="nav-link" href="/requests">Point Request</a>
+          <% end %>
+        </li>
+                
+      </ul>
+      <!-- Left links -->
+
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <% if current_admin && page != "invalid_credentials" %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/people/new">New Members</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/events/new">Start Event</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admins/sign_out">Sign out</a>
+        </li>
+      </ul>
+      <% else %>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <span class="nav-link">
+          <%= link_to "Admin Login", admin_google_oauth2_omniauth_authorize_path, method: :post %>
+          </span>
+        </li>
+      </ul>
+      <% end %>
+    </div>
+
+    </div>
+    <!-- Collapsible wrapper -->
+
+
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+<% if flash.any? %>
+    <% flash.each do |key, value| -%>
+    <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
+    <% end -%>
+<% end %>
+
+<br />

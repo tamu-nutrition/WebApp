@@ -1,0 +1,27 @@
+<%= form_with(model: meeting_participation) do |form| %>
+  <% if meeting_participation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(meeting_participation.errors.count, "error") %> prohibited this meeting_participation from being saved:</h2>
+
+      <ul>
+        <% meeting_participation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :meeting_id %>
+    <%= form.number_field :meeting_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :UIN %>
+    <%= form.text_field :UIN %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @other_event.event_id %>
+</p>
+
+<p>
+  <strong>Point worth:</strong>
+  <%= @other_event.point_worth %>
+</p>
+
+<p>
+  <strong>Event type:</strong>
+  <%= @other_event.event_type %>
+</p>
+
+<p>
+  <strong>Number participation:</strong>
+  <%= @other_event.number_participation %>
+</p>
+
+<%= link_to 'Edit', edit_other_event_path(@other_event) %> |
+<%= link_to 'Back', other_events_path %>

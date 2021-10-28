@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
+  resources :other_events
+  resources :officers
+  resources :students
+  resources :other_events
+  resources :meetings
+  resources :requests
+  resources :meeting_participations
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
   devise_scope :admin do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
     get 'admins/sign_out', to: 'admins/sessions#destroy', as: :destroy_admin_session
   end
-  resources :participations do
-    get '/participations/new' => 'participations#new', :as => :new_participation
+  resources :requests do
+    member do
+      post 'accept'
+      post 'deny'
+    end
   end
-  resources :events
-  resources :people
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'people#index'
+  root to: 'students#index'
 end
