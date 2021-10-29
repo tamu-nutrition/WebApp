@@ -6,6 +6,17 @@ class OfficersController < ApplicationController
     @officers = Officer.all
   end
 
+  def testmode
+    # MAKE SURE TO DUMP THE DB LATER, THIS SHOULD NOT BE ALLOWED IN REAL VERSION OF THE APP
+    #################################################################
+    Officer.create(email: session[:email])
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "You can now perform Officer functions."}
+      format.json {render :show, status: :success}
+    end
+    #################################################################
+  end
+
   # GET /officers/1 or /officers/1.json
   def show
   end
