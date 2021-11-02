@@ -14,7 +14,7 @@ class GenerateQr < ApplicationService
               action: 'show',
               id: @meeting.meeting_id,
               only_path: false,
-              host: 'superails.com',
+              host: 'localhost',
               protocol: 'https',
               source: 'from_qr'
               )
