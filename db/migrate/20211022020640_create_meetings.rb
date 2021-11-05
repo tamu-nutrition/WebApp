@@ -1,3 +1,6 @@
+# rubocop:disable Style/Documentation
+# frozen_string_literal: true
+
 class CreateMeetings < ActiveRecord::Migration[6.1]
   def change
     create_table :meetings do |t|
@@ -11,3 +14,5 @@ class CreateMeetings < ActiveRecord::Migration[6.1]
     end
   end
 end
+
+# rubocop:enable

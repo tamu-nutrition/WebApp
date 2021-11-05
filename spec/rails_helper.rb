@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -34,19 +36,19 @@ RSpec.configure do |config|
   def login
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new({
-      :provider => 'google',
-      :uid => '123545',
-      :info => {
-        :name => "Test",
-        :email => "test@tamu.edu"
-      },
-      :credentials => {
-        :token => "token",
-        :secret => "secret"
-      }
-      # etc.
-    })
-    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google]
+                                                                  provider: 'google',
+                                                                  uid: '123545',
+                                                                  info: {
+                                                                    name: 'Test',
+                                                                    email: 'test@tamu.edu'
+                                                                  },
+                                                                  credentials: {
+                                                                    token: 'token',
+                                                                    secret: 'secret'
+                                                                  }
+                                                                  # etc.
+                                                                })
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:google]
     visit students_url
     click_link 'Sign in with Google'
   end
