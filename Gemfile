@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'rexml' # for rspec
+gem 'rqrcode' # for qrcode
 
 gem 'devise'
 gem 'omniauth'
@@ -71,3 +72,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem "chunky_png", "~> 1.4"
