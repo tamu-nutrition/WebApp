@@ -1,5 +1,6 @@
-# Controller service to cache the current user session for access control
 # frozen_string_literal: true
+
+# Controller service to cache the current user session for access control
 
 module Admins
   # Class definition what session to assign an admin

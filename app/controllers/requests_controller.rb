@@ -1,5 +1,6 @@
-# Requests is what controls the authorization of points for participants
 # frozen_string_literal: true
+
+# Requests is what controls the authorization of points for participants
 
 # Class defines methods for accepting and rejecting participant point requests
 class RequestsController < ApplicationController

@@ -1,5 +1,6 @@
-# Meeting participation controller is used to track participant meeting points
 # frozen_string_literal: true
+
+# Meeting participation controller is used to track participant meeting points
 
 # Class controller defines necessary CRUD actions and relevant parameters for referencing meetings
 class MeetingParticipationsController < ApplicationController

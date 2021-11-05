@@ -1,5 +1,6 @@
-# Controller for describing the interaction of a student which should be different than admin use case
 # frozen_string_literal: true
+
+# Controller for describing the interaction of a student which should be different than admin use case
 
 # Class identifies student users and defines methods for CRUD of student users, points and PII
 class StudentsController < ApplicationController

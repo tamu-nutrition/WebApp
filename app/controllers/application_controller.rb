@@ -1,5 +1,6 @@
-# Applicaiton controller is used to check the status of a current user and promote to admin
 # frozen_string_literal: true
+
+# Applicaiton controller is used to check the status of a current user and promote to admin
 
 # Class defines how to check if user is an admin
 class ApplicationController < ActionController::Base

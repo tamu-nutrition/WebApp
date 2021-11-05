@@ -1,5 +1,5 @@
 # rubocop:disable Style/Documentation
-# frozen_string_literal: true
+
 
 class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
   def change

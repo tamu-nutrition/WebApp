@@ -1,5 +1,6 @@
-# Conroller service to authorize users using Google OAuth
 # frozen_string_literal: true
+
+# Conroller service to authorize users using Google OAuth
 
 module Admins
   # Defines the necessary parameters for sending an omniauth request

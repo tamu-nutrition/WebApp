@@ -1,5 +1,6 @@
-# The application is also responsible for setting up and executing the booting process
 # frozen_string_literal: true
+
+# The application is also responsible for setting up and executing the booting process
 
 require_relative 'boot'
 require 'rails/all'

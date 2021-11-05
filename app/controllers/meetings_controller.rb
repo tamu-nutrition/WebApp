@@ -1,5 +1,6 @@
-# Meetings Controller is used to create a list of meetings
 # frozen_string_literal: true
+
+# Meetings Controller is used to create a list of meetings
 
 # Class and methods define basic CRUD of meetings and relevant parameters for referencing meetings
 class MeetingsController < ApplicationController
@@ -70,4 +71,3 @@ class MeetingsController < ApplicationController
     params.require(:meeting).permit(:meeting_id, :meeting_name, :date, :location, :start_time)
   end
 end
-

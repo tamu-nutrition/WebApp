@@ -1,5 +1,6 @@
-# Admin model needed for authentication controller
 # frozen_string_literal: true
+
+# Admin model needed for authentication controller
 
 # Admin model defines objects needed to identify and authenticate a user
 class Admin < ApplicationRecord

@@ -1,5 +1,6 @@
-# Similar to meeting list, this controller defines actions for events instead.
 # frozen_string_literal: true
+
+# Similar to meeting list, this controller defines actions for events instead.
 
 # Class and methods define basic CRUD of events and relevant parameters for referencing events
 class OtherEventsController < ApplicationController

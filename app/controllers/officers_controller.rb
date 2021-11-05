@@ -1,5 +1,6 @@
-# Officers are different from normal users, thus this controller enables admins to add officers
 # frozen_string_literal: true
+
+# Officers are different from normal users, thus this controller enables admins to add officers
 
 # This class defines officer actions and checks that only authorized users can perform these actions
 class OfficersController < ApplicationController

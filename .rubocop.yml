@@ -64,6 +64,7 @@ AllCops:
     - 'db/**/*'
     - 'bin/*'
     - 'spec/feature/*'
+    - 'config/environments/*'
     - 'config/initializers/devise.rb'
     - 'node_modules/**/*'
     - 'tmp/**/*'
@@ -1859,7 +1860,7 @@ Lint/MissingSuper:
   Description: >-
                   This cop checks for the presence of constructors and lifecycle callbacks
                   without calls to `super`.
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.89'
   VersionChanged: '1.4'
 

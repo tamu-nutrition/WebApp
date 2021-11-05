@@ -1,5 +1,6 @@
-# Model for accessing objects of a student
 # frozen_string_literal: true
+
+# Model for accessing objects of a student
 
 # Contain all information unique to a student user
 class Student < ApplicationRecord

@@ -1,5 +1,5 @@
 # rubocop:disable Style/Documentation
-# frozen_string_literal: true
+
 
 class CreateMeetingParticipations < ActiveRecord::Migration[6.1]
   def change

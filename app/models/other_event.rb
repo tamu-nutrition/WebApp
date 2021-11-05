@@ -1,5 +1,6 @@
-# OtherEvent model keeps track of parameters unique to an event
 # frozen_string_literal: true
+
+# OtherEvent model keeps track of parameters unique to an event
 
 # Defines objects to be accessed by event controller
 class OtherEvent < ApplicationRecord
