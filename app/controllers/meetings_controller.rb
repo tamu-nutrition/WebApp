@@ -70,3 +70,4 @@ class MeetingsController < ApplicationController
     params.require(:meeting).permit(:meeting_id, :meeting_name, :date, :location, :start_time)
   end
 end
+
