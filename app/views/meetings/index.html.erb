@@ -1,11 +1,11 @@
 <%= render partial: "partials/navbar", locals: {loggedIn: false, page:"meetings"} %>
 
-<h1>Meeting Lists</h1>
+<h1>Meetings</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Meeting</th>
+      <th>Meeting ID</th>
       <th>Meeting name</th>
       <th>Date</th>
       <th>Location</th>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Meeting List', new_meeting_path %>
+<%= link_to 'New Meeting', new_meeting_path %>

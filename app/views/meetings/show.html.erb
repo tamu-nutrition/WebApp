@@ -25,5 +25,9 @@
   <%= @meeting.start_time %>
 </p>
 
+<p> 
+  <%= image_tag(@meeting.qr_code) if @meeting.qr_code.attached? %>
+</p>
+
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
