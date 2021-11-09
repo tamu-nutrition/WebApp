@@ -62,6 +62,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
+    @other_events = OtherEvent.all
     @request = Request.new
   end
 
