@@ -1,0 +1,11 @@
+<style type="text/css">
+    #title {display:inline-block;margin-right:10px;} 
+    #signout {display:inline-block;float:right;} 
+</style>
+<%= render partial: "partials/navbar", locals: {loggedIn: true, page:"request_list"} %>
+
+<h1>New Request</h1>
+
+<%= render 'form', request: @request %>
+
+<%= link_to 'Back', requests_path %>

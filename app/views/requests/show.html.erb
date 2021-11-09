@@ -35,5 +35,10 @@
   <%= @request.id %>
 </p>
 
+<p>
+  <strong>Type:</strong>
+  <%= @request.request_type %>
+</p>
+
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>
