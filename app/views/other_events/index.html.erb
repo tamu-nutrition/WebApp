@@ -2,16 +2,23 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Other Events</h1>
+<!-- BEFORE: <h1>Other Events</h1> -->
+<p class="h1">View Other Events</p>
+<br />
 
-<table>
+<!-- Add class and style attributes -->
+<table id="other-events-table" class="display" style="width:100%">
   <thead>
     <tr>
       <th>Event</th>
       <th>Point worth</th>
       <th>Event type</th>
       <th>Number participation</th>
-      <th colspan="3"></th>
+
+      <!-- BEFORE <th colspan="3"></th> --> 
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -22,9 +29,26 @@
         <td><%= other_event.point_worth %></td>
         <td><%= other_event.event_type %></td>
         <td><%= other_event.number_participation %></td>
-        <td><%= link_to 'Show', other_event %></td>
-        <td><%= link_to 'Edit', edit_other_event_path(other_event) %></td>
-        <td><%= link_to 'Destroy', other_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View Details', other_event %></td>
+        <td>
+          <%= link_to(edit_other_event_path(other_event)) do %>
+            <div style="text-align:center;">
+              <button type="button" class="btn btn-info btn-sm px-3">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          <% end %>
+
+        </td>
+        <td>
+          <%= link_to(other_event, method: :delete, data: { confirm: 'Are you sure want to delete?' }) do %>
+            <div style="text-align:center;">
+              <button type="button" class="btn btn-danger btn-sm px-3"> 
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +56,14 @@
 
 <br>
 
-<%= link_to 'New Other Event', new_other_event_path %>
+<%= link_to(new_other_event_path) do %>
+  <button type="button" class="btn btn-primary btn-sm px-3"> 
+    Create new other event
+  </button>
+<% end %>
+
+<script>
+$(document).ready( function () {
+    $('#other-events-table').DataTable();
+} );
+</script>
