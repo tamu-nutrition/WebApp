@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :event_id %>
-    <%= form.number_field :event_id %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.number_field :event_id, class: 'form-control' %>
+    <%= form.label :event_id, class: 'form-label'%>
   </div>
 
-  <div class="field">
-    <%= form.label :point_worth %>
-    <%= form.number_field :point_worth %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.number_field :point_worth, class: 'form-control' %>
+    <%= form.label :point_worth, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :event_type %>
-    <%= form.text_field :event_type %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.text_field :event_type, class: 'form-control' %>
+    <%= form.label :event_type, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :number_participation %>
-    <%= form.number_field :number_participation %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.number_field :number_participation, class: 'form-control' %>
+    <%= form.label :number_participation, class: 'form-label' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-success" %>
   </div>
 <% end %>
