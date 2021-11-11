@@ -1,24 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Event:</strong>
-  <%= @other_event.event_id %>
-</p>
+<br />
+<div class="card text-white bg-dark mb-3">
+  <div class="card-header">Other Event Details: </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <strong>Event:</strong> <%= @other_event.event_id %>
+    </li>
+    <li class="list-group-item">
+      <strong>Point worth:</strong> <%= @other_event.point_worth %>
+    </li>
+    <li class="list-group-item">
+      <strong>Event type:</strong> <%= @other_event.event_type %>
+    </li>
+    <li class="list-group-item">
+      <strong>Number participation:</strong> <%= @other_event.number_participation %>
+    </li>
+  </ul>
+</div>
+<br />
 
-<p>
-  <strong>Point worth:</strong>
-  <%= @other_event.point_worth %>
-</p>
-
-<p>
-  <strong>Event type:</strong>
-  <%= @other_event.event_type %>
-</p>
-
-<p>
-  <strong>Number participation:</strong>
-  <%= @other_event.number_participation %>
-</p>
-
-<%= link_to 'Edit', edit_other_event_path(@other_event) %> |
-<%= link_to 'Back', other_events_path %>
+<%= link_to(edit_other_event_path(@other_event)) do %>
+  <button type="button" class="btn btn-info btn-sm px-3"> 
+    Edit
+  </button>
+<% end %>
+<br />
+<br />
+<%= link_to(other_events_path) do %>
+  <button type="button" class="btn btn-primary btn-sm px-3"> 
+    Back to all events
+  </button>
+<% end %>
