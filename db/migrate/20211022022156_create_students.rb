@@ -1,3 +1,6 @@
+# rubocop:disable Style/Documentation
+
+
 class CreateStudents < ActiveRecord::Migration[6.1]
   def change
     create_table :students, id: false do |t|
@@ -13,3 +16,5 @@ class CreateStudents < ActiveRecord::Migration[6.1]
     end
   end
 end
+
+# rubocop:enable

@@ -1,18 +1,22 @@
+# frozen_string_literal: true
+
+# Meeting participation controller is used to track participant meeting points
+
+# Class controller defines necessary CRUD actions and relevant parameters for referencing meetings
 class MeetingParticipationsController < ApplicationController
-  before_action :set_meeting_participation, only: %i[ show edit update destroy ]
+  before_action :set_meeting_participation, only: %i[show edit update destroy]
 
   # GET /meeting_participations or /meeting_participations.json
   def index
-    if params[:id].present? 
-      @meeting_participations = MeetingParticipation.where(meeting_id: params[:id])
-    else
-      @meeting_participations = MeetingParticipation.all
-    end
+    @meeting_participations = if params[:id].present?
+                                MeetingParticipation.where(meeting_id: params[:id])
+                              else
+                                MeetingParticipation.all
+                              end
   end
-  
+
   # GET /meeting_participations/1 or /meeting_participations/1.json
-  def show
-  end
+  def show; end
 
   # GET /meeting_participations/new
   def new
@@ -20,8 +24,7 @@ class MeetingParticipationsController < ApplicationController
   end
 
   # GET /meeting_participations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /meeting_participations or /meeting_participations.json
   def create
@@ -29,7 +32,7 @@ class MeetingParticipationsController < ApplicationController
 
     respond_to do |format|
       if @meeting_participation.save
-        format.html { redirect_to @meeting_participation, notice: "Meeting participation was successfully created." }
+        format.html { redirect_to @meeting_participation, notice: 'Meeting participation was successfully created.' }
         format.json { render :show, status: :created, location: @meeting_participation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +45,7 @@ class MeetingParticipationsController < ApplicationController
   def update
     respond_to do |format|
       if @meeting_participation.update(meeting_participation_params)
-        format.html { redirect_to @meeting_participation, notice: "Meeting participation was successfully updated." }
+        format.html { redirect_to @meeting_participation, notice: 'Meeting participation was successfully updated.' }
         format.json { render :show, status: :ok, location: @meeting_participation }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,19 +58,22 @@ class MeetingParticipationsController < ApplicationController
   def destroy
     @meeting_participation.destroy
     respond_to do |format|
-      format.html { redirect_to meeting_participations_url, notice: "Meeting participation was successfully destroyed." }
+      format.html do
+        redirect_to meeting_participations_url, notice: 'Meeting participation was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meeting_participation
-      @meeting_participation = MeetingParticipation.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def meeting_participation_params
-      params.require(:meeting_participation).permit(:meeting_id, :UIN)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_meeting_participation
+    @meeting_participation = MeetingParticipation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def meeting_participation_params
+    params.require(:meeting_participation).permit(:meeting_id, :UIN)
+  end
 end

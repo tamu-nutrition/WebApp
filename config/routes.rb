@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :other_events
-  resources :officers
+  resources :officers do
+    collection do
+      get 'testmode', to: 'officers/testmode', as: :testmode
+    end
+  end
   resources :students
   resources :other_events
   resources :meetings
@@ -16,10 +22,6 @@ Rails.application.routes.draw do
       post 'accept'
       post 'deny'
     end
-  end
-  controller :pages do
-    get :qr_code_generator
-    get :qr_code_download
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'students#index'

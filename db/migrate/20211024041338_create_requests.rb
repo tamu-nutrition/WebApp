@@ -1,3 +1,6 @@
+# rubocop:disable Style/Documentation
+
+
 class CreateRequests < ActiveRecord::Migration[6.1]
   def change
     create_table :requests do |t|
@@ -12,3 +15,5 @@ class CreateRequests < ActiveRecord::Migration[6.1]
     add_foreign_key :requests, :students, column: :UIN, primary_key: :UIN
   end
 end
+
+# rubocop:enable
