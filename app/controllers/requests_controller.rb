@@ -72,6 +72,7 @@ class RequestsController < ApplicationController
   # POST /requests or /requests.json
   def create
     @request = Request.new(request_params)
+    @other_events = OtherEvent.all
 
     respond_to do |format|
       if @request.save
