@@ -68,6 +68,6 @@ class OtherEventsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def other_event_params
-    params.require(:other_event).permit(:event_id, :point_worth, :event_type, :number_participation, :name)
+    params.require(:other_event).permit(:id, :point_worth, :event_type, :number_participation, :name)
   end
 end
