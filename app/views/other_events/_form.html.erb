@@ -27,13 +27,8 @@
   </div>
 
   <div class="field form-outline mb-4" style="max-width: 500px;">
-    <%= form.text_field :event_type, class: 'form-control' %>
+    <%= form.select :event_type, ['Volunteer', 'Social'], class: 'form-control' %>
     <%= form.label :event_type, class: 'form-label' %>
-  </div>
-
-  <div class="field form-outline mb-4" style="max-width: 500px;">
-    <%= form.number_field :number_participation, class: 'form-control' %>
-    <%= form.label :number_participation, class: 'form-label' %>
   </div>
 
   <div class="actions">
