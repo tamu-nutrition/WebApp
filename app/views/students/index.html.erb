@@ -1,34 +1,33 @@
 <%= render partial: "partials/navbar", locals: {loggedIn: false, page:"students"} %>
 
-<style type="text/css">
-    #title {display:inline-block;margin-right:10px;} 
-    #signout {display:inline-block;float:right;} 
-</style>
+<p id="notice"><%= notice %></p>
 
-<div id="title">
-    <h1>TAMU Nutrition & Dietetics Association</h1>
-</div>
+<p class="h1">TAMU Nutrition & Dietetics Association</p>
+<br/>
+
 <div id="signout">
     <h3><%= link_to "Click here to test Officer mode", testmode_officers_path %><h3>
 </div>
 
-<table>
+<table id="students-table" class="display" style="width:100%">
   <thead>
     <tr>
-      <th>|--UIN--|</th>
-      <th>|--First Name--|</th>
-      <th>|--Last Name--|</th>
-      <th>|--Meeting Points--|</th>
-      <th>|--Volunteer Points--|</th>
-      <th>|--Social Points--|</th>
-      <th>|--Total Points--|</th>
-      <th>|--Active Member--|</th>
-      <th colspan="3"></th>
+      <th>UIN</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Meeting Points</th>
+      <th>Volunteer Points</th>
+      <th>Social Points</th>
+      <th>Total Points</th>
+      <th>Active Member</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @students.each do |student| %>
+    <% @students.order("total_points desc").each do |student| %>
       <tr>
         <td><%= student.UIN %></td>
         <td><%= student.first_name %></td>
@@ -36,11 +35,27 @@
         <td><%= student.meeting_points %></td>
         <td><%= student.volunteer_points %></td>
         <td><%= student.social_points %></td>
-        <td><%= student.total_points %></td>
+        <td><%= student.total_points=student.volunteer_points + student.social_points + student.meeting_points %></td>
         <td><%= student.active_member %></td>
         <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to(edit_student_path(student)) do %>
+            <div style="text-align:center;">
+              <button type="button" class="btn btn-info btn-sm px-3">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to(student, method: :delete, data: { confirm: 'Are you sure want to delete?' }) do %>
+            <div style="text-align:center;">
+              <button type="button" class="btn btn-danger btn-sm px-3"> 
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -48,4 +63,14 @@
 
 <br>
 
-<%= link_to 'New Student', new_student_path %>
+<%= link_to(new_student_path) do %>
+  <button type="button" class="btn btn-primary btn-sm px-3"> 
+    Create new student
+  </button>
+<% end %>
+
+<script>
+$(document).ready( function () {
+    $('#students-table').DataTable();
+} );
+</script>

@@ -11,47 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :UIN %>
-    <%= form.text_field :UIN %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.text_field :UIN, class: 'form-control' %>
+    <%= form.label :UIN, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.text_field :first_name, class: 'form-control' %>
+    <%= form.label :first_name, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.text_field :last_name, class: 'form-control' %>
+    <%= form.label :last_name, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :meeting_points %>
-    <%= form.number_field :meeting_points %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.number_field :meeting_points, class: 'form-control' %>
+    <%= form.label :meeting_points, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :volunteer_points %>
-    <%= form.number_field :volunteer_points %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.number_field :volunteer_points, class: 'form-control' %>
+    <%= form.label :volunteer_points, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :social_points %>
-    <%= form.number_field :social_points %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.number_field :social_points, class: 'form-control' %>
+    <%= form.label :social_points, class: 'form-label' %>
   </div>
 
-  <div class="field">
-    <%= form.label :total_points %>
-    <%= form.number_field :total_points %>
-  </div>
-
-  <div class="field">
-    <%= form.label :active_member %>
-    <%= form.check_box :active_member %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.check_box :active_member, class: 'form-check-input' %>
+    <%= form.label :active_member, class: 'form-label' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :class => "btn btn-success" %>
   </div>
 <% end %>
