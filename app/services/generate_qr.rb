@@ -15,13 +15,13 @@ class GenerateQr < ApplicationService
   require 'rqrcode'
 
   def call
-    qr_url = url_for(controller: 'meetings',
-                     action: 'show',
+    qr_url = url_for(controller: 'meeting_participations',
+                     action: 'new',
                      id: @meeting.meeting_id,
                      only_path: false,
-                     host: 'localhost',
-                     protocol: 'https',
-                     source: 'from_qr')
+                     host: 'tamu-nutrition-app.herokuapp.com',
+                     protocol: 'https')
+                    #  source: 'from_qr')
 
     qrcode = RQRCode::QRCode.new(qr_url)
 
@@ -35,7 +35,7 @@ class GenerateQr < ApplicationService
       module_px_size: 6,
       resize_exactly_to: false,
       resize_gte_to: false,
-      size: 120
+      size: 360
     )
 
     image_name = SecureRandom.hex
