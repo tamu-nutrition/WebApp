@@ -1,1 +1,1 @@
-release: rails db:migrate:redo
+release: rails db:migrate
