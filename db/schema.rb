@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2021_11_02_052857) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
+  create_table "meeting_list", force: :cascade do |t|
+    t.integer "meeting_id"
+    t.string "meeting_name"
+    t.date "date"
+    t.string "location"
+    t.datetime "start_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "meeting_participations", force: :cascade do |t|
     t.integer "meeting_id"
     t.string "UIN"

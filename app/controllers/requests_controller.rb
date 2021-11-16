@@ -22,6 +22,19 @@ class RequestsController < ApplicationController
       return nil
     end
     @request.student.increment!(:total_points, @request.points_requested)
+
+    if @request.request_type == "Volunteer"
+      @request.student.increment!(:volunteer_points, @request.points_requested)
+    end
+
+    if @request.request_type == "Social"
+      @request.student.increment!(:social_points, @request.points_requested)
+    end
+
+    if (@request.student.volunteer_points >= 3) && (@request.student.total_points >= 15) && (@request.student.social_points >= 1) && !(@request.student.active_member)
+      @request.student.toggle!(:active_member)
+    end
+
     @request.destroy
     respond_to do |format|
       format.html { redirect_to requests_url, notice: 'Request was successfully accepted.' }
@@ -49,6 +62,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
+    @other_events = OtherEvent.all
     @request = Request.new
   end
 
@@ -58,6 +72,7 @@ class RequestsController < ApplicationController
   # POST /requests or /requests.json
   def create
     @request = Request.new(request_params)
+    @other_events = OtherEvent.all
 
     respond_to do |format|
       if @request.save
@@ -122,9 +137,8 @@ class RequestsController < ApplicationController
     false
   end
 
-  # Only allow a list of trusted parameters through.
-  def request_params
-    params.require(:request).permit(:event_id, :UIN, :date_of_request, :points_requested, :request_time, :approved,
-                                    :id)
-  end
+    # Only allow a list of trusted parameters through.
+    def request_params
+      params.require(:request).permit(:event_id, :UIN, :date_of_request, :points_requested, :request_time, :approved, :id, :request_type)
+    end
 end

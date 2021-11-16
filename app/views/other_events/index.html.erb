@@ -11,6 +11,7 @@
   <thead>
     <tr>
       <th>Event</th>
+      <th>Event Name</th>
       <th>Point worth</th>
       <th>Event type</th>
       <th>Number participation</th>
@@ -25,7 +26,8 @@
   <tbody>
     <% @other_events.each do |other_event| %>
       <tr>
-        <td><%= other_event.event_id %></td>
+        <td><%= other_event.id %></td>
+        <td><%= other_event.name %></td>
         <td><%= other_event.point_worth %></td>
         <td><%= other_event.event_type %></td>
         <td><%= other_event.number_participation %></td>

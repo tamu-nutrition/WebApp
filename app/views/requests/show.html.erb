@@ -21,18 +21,13 @@
 </p>
 
 <p>
-  <strong>Request time:</strong>
-  <%= @request.request_time %>
-</p>
-
-<p>
-  <strong>Approved:</strong>
-  <%= @request.approved %>
-</p>
-
-<p>
   <strong>Id:</strong>
   <%= @request.id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @request.request_type %>
 </p>
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
