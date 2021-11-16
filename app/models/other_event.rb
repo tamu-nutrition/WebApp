@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# OtherEvent model keeps track of parameters unique to an event
+
+# Defines objects to be accessed by event controller
 class OtherEvent < ApplicationRecord
     validates :point_worth, presence: true
     validates :event_type, presence: true

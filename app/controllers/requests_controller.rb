@@ -4,7 +4,7 @@
 
 # Class defines methods for accepting and rejecting participant point requests
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[ show edit update destroy accept deny]
+  before_action :set_request, only: %i[show edit update destroy accept deny]
 
   # GET /requests or /requests.json
   def index
@@ -16,8 +16,8 @@ class RequestsController < ApplicationController
   def accept
     if authenticate_officer == false
       respond_to do |format|
-        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
-        format.json {render :show, status: :bad_request}
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
       end
       return nil
     end
@@ -37,7 +37,7 @@ class RequestsController < ApplicationController
 
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url, notice: "Request was successfully accepted." }
+      format.html { redirect_to requests_url, notice: 'Request was successfully accepted.' }
       format.json { head :no_content }
     end
   end
@@ -45,14 +45,14 @@ class RequestsController < ApplicationController
   def deny
     if authenticate_officer == false
       respond_to do |format|
-        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
-        format.json {render :show, status: :bad_request}
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
       end
       return nil
     end
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url, notice: "Request was successfully denied." }
+      format.html { redirect_to requests_url, notice: 'Request was successfully denied.' }
       format.json { head :no_content }
     end
   end
@@ -76,7 +76,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, notice: "Request was successfully created." }
+        format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -89,14 +89,14 @@ class RequestsController < ApplicationController
   def update
     if authenticate_officer == false
       respond_to do |format|
-        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
-        format.json {render :show, status: :bad_request}
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
       end
       return nil
     end
     respond_to do |format|
       if @request.update(request_params)
-        format.html { redirect_to @request, notice: "Request was successfully updated." }
+        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { render :show, status: :ok, location: @request }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -109,32 +109,33 @@ class RequestsController < ApplicationController
   def destroy
     if authenticate_officer == false
       respond_to do |format|
-        format.html { redirect_to root_path, alert: "You are not authorized to perform this action!"}
-        format.json {render :show, status: :bad_request}
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
       end
       return nil
     end
-    #@request.student.increment!(:total_points, @request.points_requested) # for testing
+    # @request.student.increment!(:total_points, @request.points_requested) # for testing
     @request.destroy
     respond_to do |format|
-      format.html { redirect_to requests_url, notice: "Request was successfully destroyed." }
+      format.html { redirect_to requests_url, notice: 'Request was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_request
-      @request = Request.find(params[:id])
-    end
 
-    def authenticate_officer
-      @officers = Officer.all
-      @officers.each do |officer|
-        return true if officer.email == session[:email]
-      end
-      false
+  # Use callbacks to share common setup or constraints between actions.
+  def set_request
+    @request = Request.find(params[:id])
+  end
+
+  def authenticate_officer
+    @officers = Officer.all
+    @officers.each do |officer|
+      return true if officer.email == session[:email]
     end
+    false
+  end
 
     # Only allow a list of trusted parameters through.
     def request_params
