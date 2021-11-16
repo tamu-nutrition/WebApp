@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_052857) do
+ActiveRecord::Schema.define(version: 2021_11_16_050001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,14 +53,12 @@ ActiveRecord::Schema.define(version: 2021_11_02_052857) do
     t.index ["email"], name: "index_admins_on_email", unique: true
   end
 
-  create_table "meeting_list", force: :cascade do |t|
-    t.integer "meeting_id"
-    t.string "meeting_name"
-    t.date "date"
-    t.string "location"
-    t.datetime "start_time"
+  create_table "events", force: :cascade do |t|
+    t.integer "event_id"
+    t.string "event_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "event_date"
   end
 
   create_table "meeting_participations", force: :cascade do |t|
@@ -87,10 +85,28 @@ ActiveRecord::Schema.define(version: 2021_11_02_052857) do
   end
 
   create_table "other_events", force: :cascade do |t|
-    t.integer "event_id"
     t.integer "point_worth"
     t.string "event_type"
-    t.integer "number_participation"
+    t.integer "number_participation", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.integer "event_id"
+    t.string "uin"
+    t.string "event_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "class_year"
+    t.string "email"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -104,6 +120,7 @@ ActiveRecord::Schema.define(version: 2021_11_02_052857) do
     t.boolean "approved"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "request_type"
   end
 
   create_table "students", primary_key: "UIN", id: :serial, force: :cascade do |t|
