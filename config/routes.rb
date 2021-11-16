@@ -2,11 +2,7 @@
 
 Rails.application.routes.draw do
   resources :other_events
-  resources :officers do
-    collection do
-      get 'testmode', to: 'officers/testmode', as: :testmode
-    end
-  end
+  resources :officers
   resources :students
   resources :other_events
   resources :meetings
