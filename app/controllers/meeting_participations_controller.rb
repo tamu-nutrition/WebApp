@@ -21,6 +21,9 @@ class MeetingParticipationsController < ApplicationController
   # GET /meeting_participations/new
   def new
     @meeting_participation = MeetingParticipation.new
+    if params[:id].present?
+      @meeting_participation.update_attribute(:meeting_id, params[:id])
+    end
   end
 
   # GET /meeting_participations/1/edit
