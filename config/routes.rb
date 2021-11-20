@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'help/about'
+  get 'help/contact'
   resources :other_events
   resources :officers
   resources :students
