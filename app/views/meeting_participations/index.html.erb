@@ -5,15 +5,16 @@
 <%= form_with url: "/meeting_participations", method: :get do |form| %>
   <%= form.label :id, "Meeting ID:" %>
   <%= form.text_field :id %>
-  <%= form.submit "Show Participation" %>
+  <%= form.submit "Filter" %>
 <% end %>
 
 <table>
   <thead>
     <tr>
       <th>Meeting</th>
+      <th colspan="100"></th>
       <th>Uin</th>
-      <th colspan="3"></th>
+      <th colspan="100"></th>
     </tr>
   </thead>
 
@@ -21,9 +22,13 @@
     <% @meeting_participations.each do |meeting_participation| %>
       <tr>
         <td><%= meeting_participation.meeting_id %></td>
+        <th colspan="100"></th>
         <td><%= meeting_participation.UIN %></td>
+        <th colspan="100"></th>
         <td><%= link_to 'Show', meeting_participation %></td>
+        <th colspan="100"></th>
         <td><%= link_to 'Edit', edit_meeting_participation_path(meeting_participation) %></td>
+        <th colspan="100"></th>
         <td><%= link_to 'Destroy', meeting_participation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

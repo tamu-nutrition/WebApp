@@ -1,5 +1,10 @@
 <%= render partial: "partials/navbar", locals: {loggedIn: false, page:"invalid_credentials"} %>
 <%= stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track' => true %>
+<style>
+.flash__alert   { color: red; position: relative; text-align: center; top: 125px; z-index: 2; }
+.flash__notice  { color: blue; position: relative; text-align: center; top: 125px; z-index: 2; }
+.flash__success { color: green; position: relative; text-align: center; top: 125px; z-index: 2; }
+</style>
 
 <div class="card card--9">
   <h2 class="card__title">You're Logged out!</h2>

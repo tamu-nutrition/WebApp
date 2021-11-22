@@ -10,17 +10,23 @@
       </ul>
     </div>
   <% end %>
+  <% if params[:id].present? %>
+    <div class="field">
+      <%= form.label :UIN %>
+      <%= form.text_field :UIN %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :meeting_id %>
+      <%= form.number_field :meeting_id %>
+    </div>
 
-  <div class="field">
-    <%= form.label :meeting_id %>
-    <%= form.number_field :meeting_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :UIN %>
-    <%= form.text_field :UIN %>
-  </div>
-
+    <div class="field">
+      <%= form.label :UIN %>
+      <%= form.text_field :UIN %>
+    </div>
+    <% meeting_participation.instance_variable_set(:@meeting_id, params[:id]) %>
+    <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>
