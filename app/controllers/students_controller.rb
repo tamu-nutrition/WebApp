@@ -52,6 +52,22 @@ class StudentsController < ApplicationController
 
   # DELETE /students/1 or /students/1.json
   def destroy
+    # since UIN is a foreign key in both meetingparticipations and requests, we must delete the entry from those tables first
+    
+    @meeting_participations = MeetingParticipation.all
+    @meeting_participations.each do |meeting_participation|
+      if meeting_participation.UIN == @student.UIN
+        meeting_participation.destroy
+      end
+    end
+
+    @requests = Request.all
+    @requests.each do |request|
+      if request.UIN == @student.UIN
+        request.destroy
+      end
+    end
+
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
