@@ -9,7 +9,7 @@ class MeetingParticipationsController < ApplicationController
   # GET /meeting_participations or /meeting_participations.json
   def index
     @meeting_participations = if params[:id].present?
-                                MeetingParticipation.where(meeting_id: params[:id])
+                                MeetingParticipation.where(meeting_name: params[:id])
                               else
                                 MeetingParticipation.all
                               end
@@ -20,6 +20,7 @@ class MeetingParticipationsController < ApplicationController
 
   # GET /meeting_participations/new
   def new
+    @meetings = Meeting.all
     @meeting_participation = MeetingParticipation.new
   end
 
@@ -29,7 +30,7 @@ class MeetingParticipationsController < ApplicationController
   # POST /meeting_participations or /meeting_participations.json
   def create
     @meeting_participation = MeetingParticipation.new(meeting_participation_params)
-
+    @meetings = Meeting.all
     # do some checks here to see if they are in the database
     # we will probably call the student controller and do some kind of isPresent() function
     if is_present(@meeting_participation.UIN)
@@ -98,6 +99,6 @@ class MeetingParticipationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def meeting_participation_params
-    params.require(:meeting_participation).permit(:meeting_id, :UIN)
+    params.require(:meeting_participation).permit(:meeting_name, :UIN)
   end
 end

@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_023847) do
   end
 
   create_table "meeting_participations", force: :cascade do |t|
+    t.string "meeting_name"
     t.integer "meeting_id"
     t.integer "UIN"
     t.datetime "created_at", precision: 6, null: false
