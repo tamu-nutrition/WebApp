@@ -122,6 +122,10 @@ header .overlay{
       value: "social_points",
     },
     {
+      text: 'Total Points',
+      value: "total_points",
+    },
+    {
       text: 'Active Member',
       value: "active_member",
     },
@@ -132,6 +136,17 @@ header .overlay{
   ];
 
   var d = <%=@students.to_json.html_safe%>
+  d2 = []
+  for(var e in d){
+      var e2 = d[e]
+      e2.total_points = e2.volunteer_points + e2.social_points + e2.meeting_points
+      d2.push(e2)
+  }
+
+  console.log(d2)
+
+  d = d2;
+
   var url_path = "students"
 </script>
 
