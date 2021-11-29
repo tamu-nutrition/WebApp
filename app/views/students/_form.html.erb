@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field form-outline mb-4" style="max-width: 500px;">
-    <%= form.text_field :UIN, class: 'form-control' %>
-    <%= form.label :UIN, class: 'form-label' %>
+    <% if params[:participating] == nil %>
+      <%= form.text_field :UIN, class: 'form-control' %>
+      <%= form.label :UIN, class: 'form-label' %>
+    <% else %>
+      <%= form.hidden_field :UIN, class: 'form-control', value: params[:UIN] %>
+    <% end %>
   </div>
 
   <div class="field form-outline mb-4" style="max-width: 500px;">
@@ -26,25 +30,17 @@
     <%= form.label :last_name, class: 'form-label' %>
   </div>
 
-  <div class="field form-outline mb-4" style="max-width: 500px;">
-    <%= form.number_field :meeting_points, class: 'form-control' %>
-    <%= form.label :meeting_points, class: 'form-label' %>
-  </div>
+  <%= form.hidden_field :meeting_points, value: 0 %>
+  <%= form.hidden_field :volunteer_points, value: 0 %>
+  <%= form.hidden_field :social_points, value: 0 %>
 
-  <div class="field form-outline mb-4" style="max-width: 500px;">
-    <%= form.number_field :volunteer_points, class: 'form-control' %>
-    <%= form.label :volunteer_points, class: 'form-label' %>
-  </div>
-
-  <div class="field form-outline mb-4" style="max-width: 500px;">
-    <%= form.number_field :social_points, class: 'form-control' %>
-    <%= form.label :social_points, class: 'form-label' %>
-  </div>
-
-  <div class="field form-outline mb-4" style="max-width: 500px;">
-    <%= form.check_box :active_member, class: 'form-check-input' %>
-    <%= form.label :active_member, class: 'form-label' %>
-  </div>
+  <% if params[:participating] == nil %>
+    <%= form.hidden_field :participating, value: false %>
+    <%= form.hidden_field :active_member, value: false %>
+  <% else %>
+    <%= form.hidden_field :participating, value: true %>
+    <%= form.hidden_field :active_member, value: false %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit :class => "btn btn-success" %>

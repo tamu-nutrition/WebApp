@@ -30,6 +30,19 @@ class MeetingParticipationsController < ApplicationController
   def create
     @meeting_participation = MeetingParticipation.new(meeting_participation_params)
 
+    # do some checks here to see if they are in the database
+    # we will probably call the student controller and do some kind of isPresent() function
+    if is_present(@meeting_participation.UIN)
+      @meeting_participation.student.increment!(:meeting_points, 3)
+    else
+      respond_to do |format|
+        #format.html { redirect_to new_student_path, notice: 'You are currently not in the system! Please enter your information here first.'}
+        format.html { redirect_to new_student_path(@meeting_participation, participating: 'true', UIN: @meeting_participation.UIN) }
+        format.json { render :show, status: :unprocessable_entity}
+      end
+      return
+    end
+
     respond_to do |format|
       if @meeting_participation.save
         format.html { redirect_to @meeting_participation, notice: 'Meeting participation was successfully created.' }
@@ -70,6 +83,17 @@ class MeetingParticipationsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_meeting_participation
     @meeting_participation = MeetingParticipation.find(params[:id])
+  end
+
+  # function to check if a student is present in the student database.
+  def is_present(uin)
+    @students = Student.all
+    @students.each do |student|
+      if student.UIN == uin
+        return true
+      end
+    end
+    return false
   end
 
   # Only allow a list of trusted parameters through.
