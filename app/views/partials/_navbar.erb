@@ -22,7 +22,7 @@
       <!-- Navbar brand -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a id="a-Dashboard" class="nav-link" href="/">Dashboard</a>
+          <a id="a-Dashboard" class="nav-link" href="/students">Leaderboards</a>
         </li>
         <li class="nav-item">
             <a id="a-Participation_List"class="nav-link" href="/meeting_participations">Participation List</a>
@@ -131,7 +131,7 @@ $( document ).ready(function() {
   if (window.location.href.toLowerCase().endsWith("requests")) {
     $( "#a-Point_Request" ).addClass( "active" );
   }
-  if(window.location.pathname == "/") {
+  if(window.location.pathname == "/students") {
     $( "#a-Dashboard" ).addClass( "active" );
   }
 });
