@@ -1,3 +1,8 @@
+<style>
+.active {
+}
+</style>
+
 <!-- Navbar -->
 <div class="container-nav-wrapper" style="background-color: #262626!important;">
 <div class="container">
@@ -47,6 +52,9 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a id="a-Help" class="nav-link" href="/help/about.html">Help</a>
+        </li>
+        <li class="nav-item">
+          <a id="a-Officers" class="nav-link" href="/officers">Officers</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/admins/sign_out">Sign out</a>
@@ -133,6 +141,9 @@ $( document ).ready(function() {
   }
   if(window.location.pathname == "/students") {
     $( "#a-Dashboard" ).addClass( "active" );
+  }
+  if(window.location.pathname == "/officers") {
+    $( "#a-Officers" ).addClass( "active" );
   }
 });
 
