@@ -48,6 +48,7 @@ header .overlay{
       <th>Social Points</th>
       <th>Total Points</th>
       <th>Active Member</th>
+      <th>Paid Dues</th>
       <th></th>
       <th></th>
       <th></th>
@@ -55,7 +56,7 @@ header .overlay{
   </thead>
 
   <tbody>
-    <% @students.order("total_points desc").each do |student| %>
+    <% @students.order(:total_points).each do |student| %>
       <tr>
         <td><%= student.UIN %></td>
         <td><%= student.first_name %></td>
@@ -63,9 +64,9 @@ header .overlay{
         <td><%= student.meeting_points %></td>
         <td><%= student.volunteer_points %></td>
         <td><%= student.social_points %></td>
-        <td><%= student.total_points=student.volunteer_points + student.social_points + student.meeting_points %></td>
+        <td><%= student.total_points %></td>
         <td><%= student.active_member %></td>
-        <td><%= link_to 'Show', student %></td>
+        <td><%= student.paid_dues %></td>
         <td>
           <%= link_to(edit_student_path(student)) do %>
             <div style="text-align:center;">
@@ -130,6 +131,10 @@ header .overlay{
       value: "active_member",
     },
     {
+      text: 'Paid Dues',
+      value: "paid_dues",
+    },
+    {
       text: 'Options',
       value: "options",
     }
@@ -142,12 +147,13 @@ header .overlay{
       e2.total_points = e2.volunteer_points + e2.social_points + e2.meeting_points
       d2.push(e2)
   }
-
   console.log(d2)
 
   d = d2;
-
+  d.sort(function(a,b){return a.total_points - b.total_points});
+  d.reverse();
   var url_path = "students"
+
 </script>
 
 <%= render partial: "partials/crud_table" %>

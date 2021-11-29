@@ -30,16 +30,21 @@
     <%= form.label :last_name, class: 'form-label' %>
   </div>
 
-  <%= form.hidden_field :meeting_points, value: 0 %>
-  <%= form.hidden_field :volunteer_points, value: 0 %>
-  <%= form.hidden_field :social_points, value: 0 %>
+  <div class="field form-outline mb-4" style="max-width: 500px;">
+    <%= form.check_box :paid_dues, class: 'form-check-input' %>
+    <%= form.label :paid_dues, class: 'form-label' %>
+  </div>
+
+  <%= form.hidden_field :meeting_points %>
+  <%= form.hidden_field :volunteer_points%>
+  <%= form.hidden_field :social_points%>
 
   <% if params[:participating] == nil %>
     <%= form.hidden_field :participating, value: false %>
-    <%= form.hidden_field :active_member, value: false %>
+    <%= form.hidden_field :active_member%>
   <% else %>
     <%= form.hidden_field :participating, value: true %>
-    <%= form.hidden_field :active_member, value: false %>
+    <%= form.hidden_field :active_member %>
   <% end %>
 
   <div class="actions">
