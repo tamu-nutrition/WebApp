@@ -5,7 +5,6 @@
 # Class identifies student users and defines methods for CRUD of student users, points and PII
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show edit update destroy]
-
   # GET /students or /students.json
   def index
     @students = Student.all
@@ -124,6 +123,6 @@ class StudentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def student_params
     params.require(:student).permit(:UIN, :first_name, :last_name, :meeting_points, :volunteer_points,
-                                    :social_points, :total_points, :participating, :active_member)
+                                    :social_points, :total_points, :participating, :active_member, :paid_dues)
   end
 end
