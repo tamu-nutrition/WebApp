@@ -1,6 +1,6 @@
-<%= render partial: "partials/navbar", locals: {loggedIn: false, page:"meetings"} %>
 
-<h1>Meetings</h1>
+<p class="h1">View Meetings</p>
+<br />
 
 <table>
   <thead>
@@ -30,4 +30,9 @@
 
 <br>
 
-<%= link_to 'New Meeting', new_meeting_path %>
+<br />
+<%= link_to(new_meeting_path) do %>
+  <button type="button" class="btn btn-primary btn-sm px-3"> 
+    Create new meeting
+  </button>
+<% end %>
