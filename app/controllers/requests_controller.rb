@@ -67,7 +67,9 @@ class RequestsController < ApplicationController
   end
 
   # GET /requests/1/edit
-  def edit; end
+  def edit
+    @other_events = OtherEvent.all
+  end
 
   # POST /requests or /requests.json
   def create
@@ -87,6 +89,7 @@ class RequestsController < ApplicationController
 
   # PATCH/PUT /requests/1 or /requests/1.json
   def update
+    @other_events = OtherEvent.all
     if authenticate_officer == false
       respond_to do |format|
         format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
