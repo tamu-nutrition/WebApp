@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
       end
       if @student.save
         if @student.participating == true
-          MeetingParticipation.create!(meeting_id: 1, UIN: @student.UIN)
+          MeetingParticipation.create!(meeting_name: "Meeting", UIN: @student.UIN)
           @student.increment!(:meeting_points, 3)
           format.html { redirect_to @student, notice: 'Student was successfully created. Participation for meeting has been added.' }
         else

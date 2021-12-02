@@ -16,6 +16,7 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/new
   def new
+    @meetings = Meeting.all
     @meeting = Meeting.new
   end
 
@@ -68,6 +69,6 @@ class MeetingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def meeting_params
-    params.require(:meeting).permit(:meeting_id, :meeting_name, :date, :location, :start_time)
+    params.require(:meeting).permit(:meeting_name, :date, :location, :start_time)
   end
 end

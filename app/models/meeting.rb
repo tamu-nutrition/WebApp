@@ -4,7 +4,7 @@
 
 # Class model for generating a qr code and referencing self
 class Meeting < ApplicationRecord
-  validates :meeting_id, presence: true
+  validates :meeting_name, presence: true
 
   has_one_attached :qr_code
 

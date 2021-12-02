@@ -17,7 +17,7 @@ class GenerateQr < ApplicationService
   def call
     qr_url = url_for(controller: 'meeting_participations',
                      action: 'new',
-                     id: @meeting.meeting_id,
+                     id: @meeting.meeting_name,
                      only_path: false,
                      host: 'tamu-nutrition-app.herokuapp.com',
                      protocol: 'https')

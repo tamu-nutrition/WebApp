@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :meeting_id %>
-    <%= form.number_field :meeting_id %>
+    <%= form.label :meeting_name %>
+    <% options = options_from_collection_for_select(@meetings, 'id', 'meeting_name') %>
+    <%= form.select :meeting_name, options %>
   </div>
 
   <div class="field">
