@@ -37,7 +37,7 @@ class MeetingParticipationsController < ApplicationController
     else
       respond_to do |format|
         #format.html { redirect_to new_student_path, notice: 'You are currently not in the system! Please enter your information here first.'}
-        format.html { redirect_to new_student_path(@meeting_participation, participating: 'true', UIN: @meeting_participation.UIN) }
+        format.html { redirect_to new_student_path(@meeting_participation, participating: 'true', UIN: @meeting_participation.UIN), meeting_name: @meeting_participation.name }
         format.json { render :show, status: :unprocessable_entity}
       end
       return
@@ -98,6 +98,6 @@ class MeetingParticipationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def meeting_participation_params
-    params.require(:meeting_participation).permit(:meeting_id, :UIN)
+    params.require(:meeting_participation).permit(:meeting_id, :UIN, :meeting_name)
   end
 end

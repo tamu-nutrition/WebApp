@@ -47,6 +47,8 @@
     <%= form.hidden_field :active_member %>
   <% end %>
 
+  <%= form.hidden_field :meeting_name, value: params[:meeting_name] %>
+
   <div class="actions">
     <%= form.submit :class => "btn btn-success" %>
   </div>
