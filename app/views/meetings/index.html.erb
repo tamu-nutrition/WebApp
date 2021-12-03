@@ -2,31 +2,40 @@
 <p class="h1">View Meetings</p>
 <br />
 
-<table>
-  <thead>
-    <tr>
-      <th>Meeting name</th>
-      <th>Date</th>
-      <th>Location</th>
-      <th>Start time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<script>
+  var headers = [
+    {
+      text: 'Meeting ID',
+      align: 'start',
+      value: 'meeting_id',
+    },
+    {
+      text: 'Meeting name',
+      value: 'meeting_name',
+    },
+    {
+      text: 'Date',
+      value: 'date',
+    },
+    {
+      text: 'Location',
+      value: 'location',
+    },
+    {
+      text: 'Start time',
+      value: 'start_time',
+    },
+    {
+      text: 'Options',
+      value: "options",
+    },
+  ];
 
-  <tbody>
-    <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= meeting.meeting_name %></td>
-        <td><%= meeting.date %></td>
-        <td><%= meeting.location %></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  var d = <%=@meetings.to_json.html_safe%>
+  var url_path = "meetings"
+</script>
+
+<%= render partial: "partials/crud_table" %>
 
 <br>
 
