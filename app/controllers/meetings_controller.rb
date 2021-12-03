@@ -25,6 +25,13 @@ class MeetingsController < ApplicationController
 
   # POST /meetings or /meetings.json
   def create
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
+      end
+      return nil
+    end
     @meeting = Meeting.new(meeting_params)
 
     respond_to do |format|
@@ -40,6 +47,13 @@ class MeetingsController < ApplicationController
 
   # PATCH/PUT /meetings/1 or /meetings/1.json
   def update
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
+      end
+      return nil
+    end
     respond_to do |format|
       if @meeting.update(meeting_params)
         format.html { redirect_to @meeting, notice: 'Meeting list was successfully updated.' }
@@ -53,6 +67,13 @@ class MeetingsController < ApplicationController
 
   # DELETE /meetings/1 or /meetings/1.json
   def destroy
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
+      end
+      return nil
+    end
     @meeting.destroy
     respond_to do |format|
       format.html { redirect_to meetings_url, notice: 'Meeting list was successfully destroyed.' }
@@ -65,6 +86,14 @@ class MeetingsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_meeting
     @meeting = Meeting.find(params[:id])
+  end
+
+  def authenticate_officer
+    @officers = Officer.all
+    @officers.each do |officer|
+      return true if officer.email == session[:email]
+    end
+    false
   end
 
   # Only allow a list of trusted parameters through.
