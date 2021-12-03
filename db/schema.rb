@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_180655) do
     t.integer "social_points"
     t.integer "total_points"
     t.boolean "participating"
+    t.string "meeting_name"
     t.boolean "active_member"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

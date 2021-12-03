@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
       end
       if @student.save
         if @student.participating == true
-          MeetingParticipation.create!(meeting_name: "Meeting", UIN: @student.UIN)
+          MeetingParticipation.create!(meeting_name: @student.meeting_name, UIN: @student.UIN)
           @student.increment!(:meeting_points, 3)
           format.html { redirect_to @student, notice: 'Student was successfully created. Participation for meeting has been added.' }
         else
@@ -123,6 +123,6 @@ class StudentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def student_params
     params.require(:student).permit(:UIN, :first_name, :last_name, :meeting_points, :volunteer_points,
-                                    :social_points, :total_points, :participating, :active_member, :paid_dues)
+                                    :social_points, :total_points, :participating, :meeting_name, :active_member, :paid_dues)
   end
 end

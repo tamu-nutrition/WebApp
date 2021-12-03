@@ -4,6 +4,7 @@
 
 # Class controller defines necessary CRUD actions and relevant parameters for referencing meetings
 class MeetingParticipationsController < ApplicationController
+  skip_before_action :authenticate_admin!
   before_action :set_meeting_participation, only: %i[show edit update destroy]
 
   # GET /meeting_participations or /meeting_participations.json
@@ -38,7 +39,7 @@ class MeetingParticipationsController < ApplicationController
     else
       respond_to do |format|
         #format.html { redirect_to new_student_path, notice: 'You are currently not in the system! Please enter your information here first.'}
-        format.html { redirect_to new_student_path(@meeting_participation, participating: 'true', UIN: @meeting_participation.UIN), meeting_name: @meeting_participation.name }
+        format.html { redirect_to new_student_path(@meeting_participation, participating: 'true', UIN: @meeting_participation.UIN, meeting_name: @meeting_participation.meeting_name) }
         format.json { render :show, status: :unprocessable_entity}
       end
       return
@@ -57,6 +58,14 @@ class MeetingParticipationsController < ApplicationController
 
   # PATCH/PUT /meeting_participations/1 or /meeting_participations/1.json
   def update
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to students_path, notice: "You are not authorized to perform this action!"}
+        format.json {render :show, status: :bad_request, location: @meeting_participation }
+      end
+      return nil
+    end
+
     respond_to do |format|
       if @meeting_participation.update(meeting_participation_params)
         format.html { redirect_to @meeting_participation, notice: 'Meeting participation was successfully updated.' }
@@ -70,6 +79,14 @@ class MeetingParticipationsController < ApplicationController
 
   # DELETE /meeting_participations/1 or /meeting_participations/1.json
   def destroy
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to students_path, notice: "You are not authorized to perform this action!"}
+        format.json {render :show, status: :bad_request, location: @meeting_participation }
+      end
+      return nil
+    end
+
     @meeting_participation.destroy
     respond_to do |format|
       format.html do
@@ -95,6 +112,14 @@ class MeetingParticipationsController < ApplicationController
       end
     end
     return false
+  end
+
+  def authenticate_officer
+    @officers = Officer.all
+    @officers.each do |officer|
+      return true if officer.email == session[:email]
+    end
+    false
   end
 
   # Only allow a list of trusted parameters through.

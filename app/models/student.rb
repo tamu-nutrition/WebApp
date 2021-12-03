@@ -13,4 +13,5 @@ class Student < ApplicationRecord
     validates :first_name, presence: true
     validates :last_name, presence: true
     validates :UIN, presence: true
+    validates :meeting_name, presence: true
 end

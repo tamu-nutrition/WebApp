@@ -12,6 +12,7 @@ class CreateStudents < ActiveRecord::Migration[6.1]
       t.integer :social_points
       t.integer :total_points
       t.boolean :participating
+      t.string :meeting_name
       t.boolean :active_member
       t.timestamps
     end

@@ -13,8 +13,7 @@
 
   <div class="field">
     <%= form.label :meeting_name %>
-    <% options = options_from_collection_for_select(@meetings, 'id', 'meeting_name') %>
-    <%= form.select :meeting_name, options %>
+    <%= form.text_field :meeting_name %>
   </div>
 
   <div class="field">
