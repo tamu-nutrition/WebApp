@@ -11,10 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :meeting_name %>
-    <%= form.text_field :meeting_name %>
-  </div>
+  <% if params[:meeting_name] == nil %>
+    <div class="field">
+      <%= form.label :meeting_name %>
+      <%= form.text_field :meeting_name %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :meeting_name, value: params[:meeting_name] %>
+  <% end %>
 
   <div class="field">
     <%= form.label :UIN %>
