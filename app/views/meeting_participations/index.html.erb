@@ -27,4 +27,8 @@
 
 <br>
 
-<%= link_to 'New Meeting Participation', new_meeting_participation_path %>
+<%= link_to(new_meeting_participation_path) do %>
+  <button type="button" class="btn btn-primary btn-sm px-3"> 
+    Create New Meeting Participation
+  </button>
+<% end %>

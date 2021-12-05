@@ -35,19 +35,27 @@
     <%= form.label :paid_dues, class: 'form-label' %>
   </div>
 
-  <%= form.hidden_field :meeting_points %>
-  <%= form.hidden_field :volunteer_points%>
-  <%= form.hidden_field :social_points%>
-
   <% if params[:participating] == nil %>
+    <%= form.label :meeting_points, class: 'form-label' %>
+    <%= form.number_field :meeting_points %>
+    <br>
+    <%= form.label :volunteer_points, class: 'form-label' %>
+    <%= form.number_field :volunteer_points %>
+    <br>
+    <%= form.label :social_points, class: 'form-label' %>
+    <%= form.number_field :social_points %>
+    <br>
     <%= form.hidden_field :participating, value: false %>
     <%= form.hidden_field :active_member%>
+    <%= form.hidden_field :meeting_name, value: 'N/A' %>
   <% else %>
+    <%= form.hidden_field :meeting_points %>
+    <%= form.hidden_field :volunteer_points%>
+    <%= form.hidden_field :social_points%>
     <%= form.hidden_field :participating, value: true %>
     <%= form.hidden_field :active_member %>
+    <%= form.hidden_field :meeting_name, value: params[:meeting_name] %>
   <% end %>
-
-  <%= form.hidden_field :meeting_name, value: params[:meeting_name] %>
 
   <div class="actions">
     <%= form.submit :class => "btn btn-success" %>

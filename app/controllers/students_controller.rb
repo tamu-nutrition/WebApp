@@ -4,6 +4,7 @@
 
 # Class identifies student users and defines methods for CRUD of student users, points and PII
 class StudentsController < ApplicationController
+  skip_before_action :authenticate_admin!
   before_action :set_student, only: %i[show edit update destroy]
   # GET /students or /students.json
   def index
@@ -34,12 +35,16 @@ class StudentsController < ApplicationController
         return nil
       end
       if @student.save
+        @student.total_points = @student.meeting_points + @student.volunteer_points + @student.social_points
         if @student.participating == true
           MeetingParticipation.create!(meeting_name: @student.meeting_name, UIN: @student.UIN)
           @student.increment!(:meeting_points, 3)
-          format.html { redirect_to @student, notice: 'Student was successfully created. Participation for meeting has been added.' }
+          format.html { redirect_to students_path, notice: 'Student was successfully created. Participation for meeting has been added.' }
         else
-          format.html { redirect_to @student, notice: 'Student was successfully created.' }
+          format.html { redirect_to students_path, notice: 'Student was successfully created.' }
+        end
+        if (@student.volunteer_points >= 3) && (@student.total_points >= 15) && (@student.social_points >= 1) && (@student.paid_dues) && !(@student.active_member)
+          @student.toggle!(:active_member)
         end
         format.json { render :show, status: :created, location: @student }
       else
@@ -59,9 +64,22 @@ class StudentsController < ApplicationController
       return nil
     end
 
+    if @student.meeting_points && @student.volunteer_points && @student.social_points
+      @student.total_points = @student.meeting_points + @student.volunteer_points + @student.social_points
+    end # the purpose of this block is to update the total points before the params get updated, but this will not always work
+
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        @student.total_points = @student.meeting_points + @student.volunteer_points + @student.social_points
+        puts "HELLO"
+        puts @student.total_points
+        puts "HI"
+        if (@student.volunteer_points >= 3) && (@student.total_points >= 15) && (@student.social_points >= 1) && (@student.paid_dues) && !(@student.active_member)
+          @student.toggle!(:active_member)
+        elsif ((@student.volunteer_points < 3) || (@student.total_points < 15) || (@student.social_points < 1) || !(@student.paid_dues)) && (@student.active_member)
+          @student.toggle!(:active_member)
+        end
+        format.html { redirect_to students_path, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit, status: :unprocessable_entity }

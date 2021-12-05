@@ -31,7 +31,7 @@ class RequestsController < ApplicationController
       @request.student.increment!(:social_points, @request.points_requested)
     end
 
-    if (@request.student.volunteer_points >= 3) && (@request.student.total_points >= 15) && (@request.student.social_points >= 1) && !(@request.student.active_member)
+    if (@request.student.volunteer_points >= 3) && (@request.student.total_points >= 15) && (@request.student.social_points >= 1) && (@request.student.paid_dues) && !(@request.student.active_member)
       @request.student.toggle!(:active_member)
     end
 
