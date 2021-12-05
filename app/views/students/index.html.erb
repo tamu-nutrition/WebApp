@@ -139,6 +139,7 @@ header .overlay{
   for(var e in d){
       var e2 = d[e]
       e2.total_points = e2.volunteer_points + e2.social_points + e2.meeting_points
+      e2.paid_dues = (e2.paid_dues) ? "Yes": "No"
       d2.push(e2)
   }
   console.log(d2)

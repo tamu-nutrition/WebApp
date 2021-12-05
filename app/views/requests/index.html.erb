@@ -7,9 +7,13 @@
 <script>
   var headers = [
     {
-      text: 'UIN',
+      text: 'First Name',
       align: 'start',
-      value: 'UIN',
+      value: 'first_name',
+    },
+    {
+      text: 'Last Name',
+      value: 'last_name',
     },
     {
       text: 'Event ID',
@@ -35,6 +39,23 @@
   ];
 
   var d = <%=@requests.to_json.html_safe%>
+  var s = <%=@students.to_json.html_safe%>
+
+  var sMap = {}
+  for(var __ in s) {
+    var e = s[__]
+    sMap[e["UIN"]] = [e["first_name"], e["last_name"]]
+  }
+
+
+  d2 = []
+  for(var e in d){
+      var e2 = d[e]
+      e2.first_name = sMap[e2.UIN][0]
+      e2.last_name = sMap[e2.UIN][1]
+      d2.push(e2)
+  }
+
   var url_path = "requests"
 </script>
 

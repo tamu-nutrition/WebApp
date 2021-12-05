@@ -10,6 +10,7 @@ class RequestsController < ApplicationController
   def index
     return nil if authenticate_officer == false
 
+    @students = Student.all
     @requests = Request.all
   end
 

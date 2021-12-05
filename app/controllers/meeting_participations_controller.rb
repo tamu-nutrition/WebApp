@@ -9,6 +9,7 @@ class MeetingParticipationsController < ApplicationController
 
   # GET /meeting_participations or /meeting_participations.json
   def index
+    @students = Student.all
     @meeting_participations = if params[:id].present?
                                 MeetingParticipation.where(meeting_name: params[:id])
                               else
