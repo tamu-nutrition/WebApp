@@ -17,10 +17,12 @@
     <%= form.select :event_id, options %>
   </div>
 
-  <div class="field">
-    <%= form.label :UIN %>
-    <%= form.text_field :UIN %>
-  </div>
+  <% if @request.new_record? %>
+    <div class="field">
+      <%= form.label :UIN %>
+      <%= form.text_field :UIN %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :points_requested %>

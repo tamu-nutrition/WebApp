@@ -5,7 +5,7 @@
 # Class controller defines necessary CRUD actions and relevant parameters for referencing meetings
 class MeetingParticipationsController < ApplicationController
   skip_before_action :authenticate_admin!
-  before_action :set_meeting_participation, only: %i[show edit update destroy]
+  before_action :set_meeting_participation, only: %i[destroy]
 
   # GET /meeting_participations or /meeting_participations.json
   def index
