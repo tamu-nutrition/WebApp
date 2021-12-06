@@ -12,7 +12,15 @@ class MeetingsController < ApplicationController
   end
 
   # GET /meetings/1 or /meetings/1.json
-  def show; end
+  def show
+    if authenticate_officer == false
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: 'You are not authorized to perform this action!' }
+        format.json { render :show, status: :bad_request }
+      end
+      return nil
+    end
+  end
 
   # GET /meetings/new
   def new
