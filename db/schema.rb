@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_180655) do
+ActiveRecord::Schema.define(version: 2021_12_06_031601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_180655) do
   end
 
   create_table "other_events", force: :cascade do |t|
-    t.integer "point_worth"
     t.string "event_type"
     t.integer "number_participation", default: 0
     t.datetime "created_at", precision: 6, null: false

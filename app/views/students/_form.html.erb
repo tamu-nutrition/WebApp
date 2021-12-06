@@ -11,14 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field form-outline mb-4" style="max-width: 500px;">
-    <% if params[:participating] == nil %>
-      <%= form.text_field :UIN, class: 'form-control' %>
-      <%= form.label :UIN, class: 'form-label' %>
-    <% else %>
-      <%= form.hidden_field :UIN, class: 'form-control', value: params[:UIN] %>
-    <% end %>
-  </div>
+  <% if @student.new_record? %>
+    <div class="field form-outline mb-4" style="max-width: 500px;">
+      <% if params[:participating] == nil %>
+        <%= form.text_field :UIN, class: 'form-control' %>
+        <%= form.label :UIN, class: 'form-label' %>
+      <% else %>
+        <%= form.hidden_field :UIN, class: 'form-control', value: params[:UIN] %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="field form-outline mb-4" style="max-width: 500px;">
     <%= form.text_field :first_name, class: 'form-control' %>
