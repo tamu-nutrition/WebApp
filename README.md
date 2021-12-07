@@ -1,43 +1,33 @@
 # README
 
-# changes
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Authentication and Authorization Ruby on Rails app boilerplate 
 
 Stack:
 
 * Rails 6.1 +
-* Ruby 3.0.2 + 
-* Postgresql
+* Ruby 3.0.2 +
+* PostgreSQL
 
-# Core featuers:
+# Dependencies 
+ See the [Gemfile.lock](./Gemfile.lock)
+
+# Core features:
+
+Add students to the club
+Give the students points
+Automatically update whether students are part of the club using their points and whether they have paid dues
+Be able to add officers to the club
+Set up meetings
+Sign in to meetings, which automatically updates student points
+Submit requests for points from other meetings, which can be approved by officers.  This will give students the points they requested
+Create other meetings
+Show a leaderboard of students based on how many points they have
+
 
 ## Authentication
 
-* Log in with Google under texas a&m domain
+* Log in with Google Account under the Texas A&M University System domain
+
+*** Ex. student@tamu.edu
 
 ## Authorization
 
@@ -55,10 +45,17 @@ console:
 ```
 git clone https://github.com/tamu-nutrition/WebApp.git
 cd WebApp
-rails bundle install
+bundle install
 yarn install
 rails db:create db:migrate
 ```
-
+# Start the Web Server
+```
+rails s -b 0.0.0.0
+```
+# Run All Tests
+```
+rails rspec .
 
 ```
+
