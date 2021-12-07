@@ -24,3 +24,41 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Authentication and Authorization Ruby on Rails app boilerplate 
+
+Stack:
+
+* Rails 6.1 +
+* Ruby 3.0.2 + 
+* Postgresql
+
+# Core featuers:
+
+## Authentication
+
+* Log in with Google under texas a&m domain
+
+## Authorization
+
+* User roles
+* Role-based access to different features
+* Admin can edit user roles
+
+## Connected services:
+
+* Google oAuth API
+
+# Installation
+
+console:
+```
+git clone https://github.com/tamu-nutrition/WebApp.git
+cd WebApp
+rails bundle install
+yarn install
+rails db:create db:migrate
+```
+
+
+```
