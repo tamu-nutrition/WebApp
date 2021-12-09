@@ -58,4 +58,18 @@ rails s -b 0.0.0.0
 rails rspec .
 
 ```
+## CI/CD Process
+Set up CI/CD through GitHub Actions
+Go to /.github/workflows/main.yml
+
+# Step 1: set up environment variables
+```
+env:
+  RUBY_VERSION: 3.0.2
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: password
+  DATABASE_USER: postgres
+  DATABASE_PASSWORD: password
+```
+
 
