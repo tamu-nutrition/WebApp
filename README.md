@@ -58,11 +58,11 @@ rails s -b 0.0.0.0
 rails rspec .
 
 ```
-## CI/CD Process
+# CI/CD Process
 Set up CI/CD through GitHub Actions
 Go to /.github/workflows/main.yml
 
-# Step 1: set up environment variables
+## Step 1: set up environment variables
 ```
 env:
   RUBY_VERSION: 3.0.2
@@ -71,5 +71,23 @@ env:
   DATABASE_USER: postgres
   DATABASE_PASSWORD: password
 ```
+## Step 2: create GitHub action "Rails tests"
+Action runs when pushing and creating pull requests
+```
+name: Rails tests
+on: [push, pull_request]
+```
+## Step 3: Create jobs to run – Rspec test
+Since we wanted to test using database as well, we set up postgres 
+Then we went into the steps that were used to run Rspec tests using our original version of Ruby. The general steps are listed below. 
 
+### 1.	Install postgres client
+2.	Install dependencies
+3.	Create database
+4.	Run tests
+5.	Run brakeman
+6.	Run robocop
+7.	Upload coverage results
+8.	Upload rubocop report
+9.	Upload brakeman report
 
