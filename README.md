@@ -81,12 +81,32 @@ on: [push, pull_request]
 Since we wanted to test using database as well, we set up postgres 
 Then we went into the steps that were used to run Rspec tests using our original version of Ruby. The general steps are listed below. 
 
-### 1.	Install postgres client
+1.	Install postgres client
+``` 
+sudo apt-get install libpq-dev
+```
 2.	Install dependencies
+```
+gem install bundler
+bundler install
+``` 
 3.	Create database
+``` 
+bundler exec rails db:create RAILS_ENV=test
+bundler exec rails db:migrate RAILS_ENV=test
+```
 4.	Run tests
+``` 
+bundler exec rspec .
+```
 5.	Run brakeman
+```
+brakeman -o brakeman.txt
+```
 6.	Run robocop
+``` 
+bundler exec rubocop --out rubocop.txt
+```
 7.	Upload coverage results
 8.	Upload rubocop report
 9.	Upload brakeman report
